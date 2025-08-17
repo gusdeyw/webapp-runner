@@ -1,0 +1,632 @@
+/* Component-specific styles */
+
+/* System Info Component */
+.system-info {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.info-item:last-child {
+    border-bottom: none;
+}
+
+.info-label {
+    font-weight: 500;
+    color: #64748b;
+}
+
+.info-value {
+    font-weight: 600;
+    color: #1e293b;
+}
+
+/* Apps Preview Component */
+.apps-preview {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.app-preview-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    background-color: #f8fafc;
+    transition: background-color 0.2s ease;
+}
+
+.app-preview-item:hover {
+    background-color: #f1f5f9;
+}
+
+.app-preview-icon {
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+.app-preview-info {
+    flex: 1;
+}
+
+.app-preview-name {
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 2px;
+}
+
+.app-preview-url {
+    font-size: 0.8rem;
+    color: #64748b;
+    text-decoration: none;
+}
+
+.app-preview-url:hover {
+    color: #667eea;
+}
+
+.app-preview-status {
+    font-size: 0.75rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+.app-preview-status.running {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+.app-preview-status.stopped {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
+/* Services Status Component */
+.services-status {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.service-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    background-color: #f8fafc;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+}
+
+.service-item:hover {
+    background-color: #f1f5f9;
+}
+
+.service-name {
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.service-status {
+    font-size: 0.8rem;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: 500;
+    min-width: 80px;
+    text-align: center;
+}
+
+.service-status.running {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+.service-status.stopped {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
+.service-status.loading {
+    background-color: #e5e7eb;
+    color: #6b7280;
+}
+
+/* Activity List Component */
+.activity-list {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.activity-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.activity-item:last-child {
+    border-bottom: none;
+}
+
+.activity-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.activity-icon.success {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+.activity-icon.error {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
+.activity-icon.info {
+    background-color: #dbeafe;
+    color: #1e40af;
+}
+
+.activity-content {
+    flex: 1;
+}
+
+.activity-message {
+    color: #1e293b;
+    font-weight: 500;
+    margin-bottom: 2px;
+}
+
+.activity-time {
+    font-size: 0.75rem;
+    color: #64748b;
+}
+
+/* Apps Grid Component */
+.apps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.app-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+    overflow: hidden;
+    transition: all 0.2s ease;
+}
+
+.app-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.app-card-header {
+    padding: 20px;
+    border-bottom: 1px solid #e2e8f0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.app-card-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.app-card-url {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+}
+
+.app-card-url:hover {
+    color: white;
+}
+
+.app-card-content {
+    padding: 20px;
+}
+
+.app-card-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.app-info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.app-info-label {
+    font-size: 0.8rem;
+    color: #64748b;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.app-info-value {
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.app-card-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+/* Packages Grid Component */
+.packages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.package-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+    overflow: hidden;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.package-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.package-card.selected {
+    border-color: #667eea;
+    box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
+}
+
+.package-card-image {
+    height: 150px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.package-card-content {
+    padding: 20px;
+}
+
+.package-card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 8px;
+}
+
+.package-card-description {
+    color: #64748b;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 16px;
+}
+
+.package-card-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: #9ca3af;
+}
+
+.package-version {
+    background-color: #f3f4f6;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+/* Install Wizard Component */
+.install-wizard {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.wizard-step {
+    display: none;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.wizard-step.active {
+    display: block;
+}
+
+.step-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.step-header h3 {
+    font-size: 1.5rem;
+    color: #1e293b;
+    margin-bottom: 8px;
+}
+
+.step-header p {
+    color: #64748b;
+    font-size: 1rem;
+}
+
+.config-form {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+}
+
+.wizard-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #e2e8f0;
+}
+
+/* Installation Progress Component */
+.installation-progress {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background-color: #e2e8f0;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+    text-align: center;
+    font-weight: 500;
+    color: #1e293b;
+    margin-bottom: 20px;
+}
+
+.installation-log {
+    background-color: #1a202c;
+    color: #e2e8f0;
+    border-radius: 8px;
+    padding: 16px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.8rem;
+    max-height: 200px;
+    overflow-y: auto;
+    line-height: 1.4;
+}
+
+.log-content {
+    white-space: pre-wrap;
+}
+
+/* Completion Component */
+.completion-info {
+    text-align: center;
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+}
+
+.success-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+.app-info h4 {
+    font-size: 1.3rem;
+    color: #1e293b;
+    margin-bottom: 8px;
+}
+
+.app-info p {
+    color: #64748b;
+    margin-bottom: 30px;
+}
+
+.app-info a {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.app-info a:hover {
+    text-decoration: underline;
+}
+
+.completion-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Services Grid Component */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.service-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+    overflow: hidden;
+    transition: all 0.2s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.service-header {
+    padding: 20px;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8fafc;
+}
+
+.service-header h4 {
+    color: #1e293b;
+    font-weight: 600;
+    margin: 0;
+}
+
+.service-badge {
+    font-size: 0.8rem;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+.service-badge.running {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+.service-badge.stopped {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
+.service-badge.unknown {
+    background-color: #e5e7eb;
+    color: #6b7280;
+}
+
+.service-content {
+    padding: 20px;
+}
+
+.service-content p {
+    color: #64748b;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.service-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+/* Page Header Component */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.page-header h3 {
+    color: #1e293b;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+/* Responsive adjustments for components */
+@media (max-width: 768px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .apps-grid,
+    .packages-grid,
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .app-card-info {
+        grid-template-columns: 1fr;
+    }
+
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .completion-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .wizard-navigation {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .service-actions {
+        justify-content: stretch;
+    }
+
+    .service-actions .btn {
+        flex: 1;
+    }
+}

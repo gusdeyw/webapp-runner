@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laravel App Deployer</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="icon" href="../assets/icons/icon.png" type="image/png">
+</head>
+
+<body>
+    <div id="app">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <img src="../assets/icons/icon.png" alt="Laravel Deployer" class="logo-icon">
+                    <h1 class="logo-text">Laravel Deployer</h1>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="#dashboard" class="nav-link active" data-page="dashboard">
+                            <span class="nav-icon">🏠</span>
+                            <span class="nav-text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#apps" class="nav-link" data-page="apps">
+                            <span class="nav-icon">📱</span>
+                            <span class="nav-text">Applications</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#install" class="nav-link" data-page="install">
+                            <span class="nav-icon">⬇️</span>
+                            <span class="nav-text">Install Apps</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#services" class="nav-link" data-page="services">
+                            <span class="nav-icon">⚙️</span>
+                            <span class="nav-text">Services</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#databases" class="nav-link" data-page="databases">
+                            <span class="nav-icon">🗄️</span>
+                            <span class="nav-text">Databases</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#backups" class="nav-link" data-page="backups">
+                            <span class="nav-icon">💾</span>
+                            <span class="nav-text">Backups</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#settings" class="nav-link" data-page="settings">
+                            <span class="nav-icon">⚙️</span>
+                            <span class="nav-text">Settings</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="main-header">
+                <div class="header-left">
+                    <h2 id="page-title">Dashboard</h2>
+                </div>
+                <div class="header-right">
+                    <div class="system-status">
+                        <span class="status-indicator" id="system-status">🟢</span>
+                        <span class="status-text" id="status-text">System Online</span>
+                    </div>
+                    <button class="btn btn-icon" id="refresh-btn" title="Refresh">
+                        <span>🔄</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Content Pages -->
+            <div class="content-container">
+                <!-- Dashboard Page -->
+                <div id="dashboard-page" class="page active">
+                    <div class="dashboard-grid">
+                        <!-- System Overview -->
+                        <div class="card dashboard-card">
+                            <div class="card-header">
+                                <h3>System Overview</h3>
+                            </div>
+                            <div class="card-content">
+                                <div class="system-info">
+                                    <div class="info-item">
+                                        <span class="info-label">Platform:</span>
+                                        <span class="info-value" id="platform-info">Loading...</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">Node Version:</span>
+                                        <span class="info-value" id="node-version">Loading...</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">Memory Usage:</span>
+                                        <span class="info-value" id="memory-usage">Loading...</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Installed Apps -->
+                        <div class="card dashboard-card">
+                            <div class="card-header">
+                                <h3>Installed Applications</h3>
+                                <span class="badge" id="apps-count">0</span>
+                            </div>
+                            <div class="card-content">
+                                <div id="apps-preview" class="apps-preview">
+                                    <p class="empty-state">No applications installed</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Services Status -->
+                        <div class="card dashboard-card">
+                            <div class="card-header">
+                                <h3>Services Status</h3>
+                            </div>
+                            <div class="card-content">
+                                <div class="services-status" id="services-status">
+                                    <div class="service-item">
+                                        <span class="service-name">PHP</span>
+                                        <span class="service-status loading">Loading...</span>
+                                    </div>
+                                    <div class="service-item">
+                                        <span class="service-name">Nginx</span>
+                                        <span class="service-status loading">Loading...</span>
+                                    </div>
+                                    <div class="service-item">
+                                        <span class="service-name">MySQL</span>
+                                        <span class="service-status loading">Loading...</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Recent Activity -->
+                        <div class="card dashboard-card">
+                            <div class="card-header">
+                                <h3>Recent Activity</h3>
+                            </div>
+                            <div class="card-content">
+                                <div id="recent-activity" class="activity-list">
+                                    <p class="empty-state">No recent activity</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Applications Page -->
+                <div id="apps-page" class="page">
+                    <div class="page-header">
+                        <h3>Installed Applications</h3>
+                        <button class="btn btn-primary" id="install-new-app">Install New App</button>
+                    </div>
+                    <div id="apps-grid" class="apps-grid">
+                        <div class="empty-state-card">
+                            <p>No applications installed yet.</p>
+                            <button class="btn btn-primary" onclick="switchPage('install')">Install Your First
+                                App</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Install Apps Page -->
+                <div id="install-page" class="page">
+                    <div class="install-wizard" id="install-wizard">
+                        <!-- Step 1: Package Selection -->
+                        <div class="wizard-step active" id="step-selection">
+                            <div class="step-header">
+                                <h3>Select Application to Install</h3>
+                                <p>Choose from available Laravel applications</p>
+                            </div>
+                            <div class="packages-grid" id="packages-grid">
+                                <div class="loading-state">
+                                    <div class="spinner"></div>
+                                    <p>Loading available packages...</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Configuration -->
+                        <div class="wizard-step" id="step-configuration">
+                            <div class="step-header">
+                                <h3>Configure Installation</h3>
+                                <p>Set up your application preferences</p>
+                            </div>
+                            <div class="config-form">
+                                <div class="form-group">
+                                    <label for="app-name">Application Name:</label>
+                                    <input type="text" id="app-name" class="form-control" placeholder="My Laravel App">
+                                </div>
+                                <div class="form-group">
+                                    <label for="install-path">Installation Path:</label>
+                                    <div class="input-group">
+                                        <input type="text" id="install-path" class="form-control" readonly>
+                                        <button class="btn btn-secondary" id="browse-path">Browse</button>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="app-port">Application Port:</label>
+                                    <input type="number" id="app-port" class="form-control" placeholder="8000"
+                                        min="1024" max="65535">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Installation Progress -->
+                        <div class="wizard-step" id="step-installation">
+                            <div class="step-header">
+                                <h3>Installing Application</h3>
+                                <p>Please wait while we set up your application...</p>
+                            </div>
+                            <div class="installation-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="progress-fill"></div>
+                                </div>
+                                <div class="progress-text" id="progress-text">Initializing...</div>
+                                <div class="installation-log" id="installation-log">
+                                    <div class="log-content"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 4: Completion -->
+                        <div class="wizard-step" id="step-completion">
+                            <div class="step-header">
+                                <h3>Installation Complete!</h3>
+                                <p>Your Laravel application has been successfully installed.</p>
+                            </div>
+                            <div class="completion-info">
+                                <div class="success-icon">✅</div>
+                                <div class="app-info">
+                                    <h4 id="installed-app-name">Application Name</h4>
+                                    <p>URL: <a href="#" id="installed-app-url" target="_blank">http://localhost:8000</a>
+                                    </p>
+                                </div>
+                                <div class="completion-actions">
+                                    <button class="btn btn-primary" id="open-app">Open Application</button>
+                                    <button class="btn btn-secondary" id="install-another">Install Another App</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Wizard Navigation -->
+                        <div class="wizard-navigation">
+                            <button class="btn btn-secondary" id="wizard-back" disabled>Back</button>
+                            <button class="btn btn-primary" id="wizard-next">Next</button>
+                            <button class="btn btn-success" id="wizard-install" style="display: none;">Install</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Services Page -->
+                <div id="services-page" class="page">
+                    <div class="page-header">
+                        <h3>System Services</h3>
+                        <button class="btn btn-secondary" id="refresh-services">Refresh Status</button>
+                    </div>
+                    <div class="services-grid">
+                        <div class="service-card" id="php-service">
+                            <div class="service-header">
+                                <h4>PHP Service</h4>
+                                <span class="service-badge" id="php-status">Unknown</span>
+                            </div>
+                            <div class="service-content">
+                                <p>PHP-FPM service for Laravel applications</p>
+                                <div class="service-actions">
+                                    <button class="btn btn-success" data-action="start"
+                                        data-service="php">Start</button>
+                                    <button class="btn btn-warning" data-action="stop" data-service="php">Stop</button>
+                                    <button class="btn btn-info" data-action="restart"
+                                        data-service="php">Restart</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="service-card" id="nginx-service">
+                            <div class="service-header">
+                                <h4>Nginx Service</h4>
+                                <span class="service-badge" id="nginx-status">Unknown</span>
+                            </div>
+                            <div class="service-content">
+                                <p>Web server for serving Laravel applications</p>
+                                <div class="service-actions">
+                                    <button class="btn btn-success" data-action="start"
+                                        data-service="nginx">Start</button>
+                                    <button class="btn btn-warning" data-action="stop"
+                                        data-service="nginx">Stop</button>
+                                    <button class="btn btn-info" data-action="restart"
+                                        data-service="nginx">Restart</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="service-card" id="mysql-service">
+                            <div class="service-header">
+                                <h4>MySQL Service</h4>
+                                <span class="service-badge" id="mysql-status">Unknown</span>
+                            </div>
+                            <div class="service-content">
+                                <p>Database server for Laravel applications</p>
+                                <div class="service-actions">
+                                    <button class="btn btn-success" data-action="start"
+                                        data-service="mysql">Start</button>
+                                    <button class="btn btn-warning" data-action="stop"
+                                        data-service="mysql">Stop</button>
+                                    <button class="btn btn-info" data-action="restart"
+                                        data-service="mysql">Restart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Other pages will be added here -->
+                <div id="databases-page" class="page">
+                    <h3>Database Management</h3>
+                    <p>Database management features coming soon...</p>
+                </div>
+
+                <div id="backups-page" class="page">
+                    <h3>Backup Management</h3>
+                    <p>Backup management features coming soon...</p>
+                </div>
+
+                <div id="settings-page" class="page">
+                    <h3>Application Settings</h3>
+                    <p>Settings panel coming soon...</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay" style="display: none;">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <p>Loading...</p>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/installer.js"></script>
+    <script src="js/services.js"></script>
+    <script src="js/utils.js"></script>
+</body>
+
+</html>
